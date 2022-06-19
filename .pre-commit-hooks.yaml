@@ -98,6 +98,12 @@
     entry: check-model-parents-and-childs
     language: python
     types: [sql]
+-   id: check-model-parents-database
+    name: Check the parent model has a specific database
+    description: Ensures the parent models or sources are from certain database.
+    entry: check-model-parents-database
+    language: python
+    types: [sql]
 -   id: check-model-tags
     name: Check the model has valid tags
     description: Ensures that the model has only valid tags from the provided list.
