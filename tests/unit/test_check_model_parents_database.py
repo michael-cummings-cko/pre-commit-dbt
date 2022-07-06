@@ -20,6 +20,10 @@ TESTS = (  # type: ignore
     (["aa/bb/parent_child.sql"], ["--blacklist", "prod2"], True, 1),
     (["aa/bb/parent_child.sql"], ["--blacklist", "prod"], True, 1),
     (["aa/bb/parent_child.sql"], ["--blacklist", "dev"], True, 0),
+    (["aa/bb/parent_child.sql"], ["--blacklist", "prod[0-9]*"], True, 1),
+    (["aa/bb/parent_child.sql"], ["--blacklist", "abc[0-9]*"], True, 0),
+    (["aa/bb/parent_child.sql"], ["--whitelist", "prod[0-9]*", "core"], True, 0),
+    (["aa/bb/parent_child.sql"], ["--whitelist", "prod[0-9]*"], True, 1),
 )
 
 
