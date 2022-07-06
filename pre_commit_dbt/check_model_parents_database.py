@@ -1,4 +1,5 @@
 import argparse
+import re
 from typing import Any
 from typing import Dict
 from typing import Optional
@@ -39,7 +40,7 @@ def check_parents_database(
         )
         for parent in parents:
             db = parent.node.get("database")
-            if (whitelist and db not in whitelist) or db in blacklist:
+            if (whitelist and not any(re.match(regex, db) for regex in whitelist) ) or any(re.match(regex, db) for regex in blacklist):
                 status_code = 1
                 print(
                     f"{model.model_name}: "
